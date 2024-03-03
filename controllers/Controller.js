@@ -7,9 +7,11 @@ module.exports.getMGMData = async (req, res) => {
 
         // Incrementa il count e gestisci isValid per ciascun oggetto fetchato
         for (const mgmObject of mgmData) {
-            mgmObject.count++;
+            
             if (mgmObject.count === 5) {
                 mgmObject.isValid = false;
+            } else {
+                mgmObject.count++;
             }
             await mgmObject.save(); // Salva le modifiche nel database
         }
